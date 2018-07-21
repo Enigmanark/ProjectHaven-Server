@@ -1,21 +1,27 @@
 var signup = require("./signup");
 
-module.exports = function(app) {
+module.exports = function(app, passport) {
     app.get("/", function(req, res) {
         console.log("Got connection!");
         res.send("Okay");
     });
 
-    app.post("/login", function(req, res) {
-        var json = req.body;
-        var email = json.Email;
-        var password = json.Password;
-        console.log("Username is: " + email);
-        console.log("Password is: " + password);
+    //Process login form
+    app.post("/login", passport.authenticate('local', {}), function(req, res) {
+        res.send("Success");
+    }
+    );
+
+    app.post("/signup", signup, function(req, res) {
         res.send("Success");
     });
 
-    app.post("/signup", signup, function(req, res) {
-
-    });
+    function isAuthenticated(req, res, next) {
+        if(req.isAuthenticated()) {
+            return next();
+        }
+        else {
+            console.log("User not logged in");
+        }
+    };
 }

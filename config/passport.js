@@ -1,64 +1,40 @@
 
-// load all the things we need
-var LocalStrategy = require('passport-local').Strategy;
+var Player = require("../Models/player.js");
+var JsonStrategy = require('passport-json').Strategy;
 
-// load up the user model
-var User = require('../Models/player.js');
-
-// expose this function to our app using module.exports
 module.exports = function(passport) {
-
-    // =========================================================================
-    // passport session setup ==================================================
-    // =========================================================================
-    // required for persistent login sessions
-    // passport needs ability to serialize and unserialize users out of session
-
-    // used to serialize the user for the session
+    //for persistent login
     passport.serializeUser(function(player, done) {
         done(null, player.id);
     });
 
-    // used to deserialize the user
     passport.deserializeUser(function(id, done) {
         User.findById(id, function(err, player) {
             done(err, player);
         });
     });
-    
-    // =========================================================================
-    // LOCAL LOGIN =============================================================
-    // =========================================================================
-    // we are using named strategies since we have one for login and one for signup
-    // by default, if there was no name, it would just be called 'local'
 
-    passport.use('local-login', new LocalStrategy({
-        // by default, local strategy uses username and password, we will override with email
-        usernameField : 'email',
-        passwordField : 'password',
-        passReqToCallback : true // allows us to pass back the entire request to the callback
+    //Login strategy
+    passport.use('local', new JsonStrategy({
+        usernameProp: 'Email',
+        passwordProp: 'Password'
     },
-    function(req, email, password, done) { // callback with email and password from our form
-
-        // find a user whose email is the same as the forms email
-        // we are checking to see if the user trying to login already exists
-        Player.findOne({ 'email' :  email }, function(err, user) {
-            // if there are any errors, return the error before anything else
-            if (err)
-                return done(err);
-
-            // if no user is found, return the message
-            if (!user)
+    function(email, password, done) { //callback with username and password from our form
+        console.log("Checking");
+        //Check if there's an account with that email
+        Player.findOne( { "email" : email}, function(err, player) {
+            if(err) throw err;
+            if(player) { //If we found a user, then check password
+                console.log("Found player");
+                if(player.validPassword(password)) {
+                    console.log("Valid password");
+                    return done(null, player);
+                }
+            }
+            else if(player == null){
+                console.log("No player found with that email");
                 return done(null, false);
-
-            // if the user is found but the password is wrong
-            if (!user.validPassword(password))
-                return done(null, false);
-
-            // all is well, return successful user
-            return done(null, user);
+            }
         });
-
     }));
-
 };

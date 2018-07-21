@@ -1,4 +1,4 @@
-var User = require("./Models/player.js");
+var Player = require("./Models/player.js");
 
 module.exports = function(req, res, next) {
     var json = req.body;
@@ -6,7 +6,7 @@ module.exports = function(req, res, next) {
     var password = json.Password;
 
     //Check if there's an account already with that email
-    User.findOne( { "email" : email}, function(err, user) {
+    Player.findOne( { "email" : email}, function(err, user) {
         if(err) throw err;
         if(user) { //If we found a user, then signup fails, redirect
             res.send("100");
