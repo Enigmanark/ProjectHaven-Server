@@ -99,6 +99,7 @@ module.exports = function(app) {
                     else {
                         newData = updateCharacter(req.body.Character, req.body.Experience, req.body.Gold);
                         player.characters[id] = newData;
+                        player.markModified("characters");
                         player.save(function(err) {
                             if(err) console.log("Error saving character ;.;");
                             else {
