@@ -216,6 +216,6 @@ module.exports = function(app) {
     });
 
     app.post("/signup", signup, function(req, res) {
-        res.send("Success");
+        res.send("200");
     });
 }
