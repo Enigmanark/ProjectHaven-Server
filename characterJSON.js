@@ -1,3 +1,5 @@
+var beginnerInventory = require("./inventoryJSON");
+
 var character = {
     "Name" : "",
     "Level" : 0,
@@ -49,6 +51,7 @@ var character = {
     "Dark" : .95,
     "CurrentDark" : .95,
     "CurrentWeaponID" : 1,
+    "Inventory" : beginnerInventory()
 }
 
 module.exports = character;
