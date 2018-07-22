@@ -10,6 +10,11 @@ module.exports = function(app) {
         res.send("Okay");
     });
 
+    app.options("/login", login, function(req, res) {
+        console.log("Got login");
+        res.send("Success");
+    });
+
     //Process login form
     app.post("/login", login, function(req, res) {
         console.log("Got login");
