@@ -82,7 +82,7 @@ module.exports = function(app) {
                 if(player.validPassword(req.body.Password)) {
                     console.log("Valid password!");
                     console.log("Looking for character..");
-                    var charName = req.body.Name;
+                    var charName = req.body.Character["Name"];
                     var id = -1;
                     for(i = 0; i < player.characters.length; i++) {
                         var n = player.characters[i]["Name"];
