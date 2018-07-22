@@ -10,9 +10,11 @@ module.exports = function(app) {
         res.send("Okay");
     });
 
-    app.options("/login", login, function(req, res) {
-        console.log("Got login");
-        res.send("Success");
+    app.options("/login", function(req, res) {
+        res.set('Access-Control-Allow-Origin', ['*']);
+        res.set('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+        res.set('Access-Control-Allow-Headers', 'Content-Type');
+        res.send(200);
     });
 
     //Process login form
