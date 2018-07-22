@@ -2,8 +2,9 @@ var signup = require("./signup");
 var Player = require("./Models/player");
 var login = require("./config/login");
 var characterJSON = require("./characterJSON");
+var updateCharacter = require("./updateCharacter");
 
-module.exports = function(app, passport) {
+module.exports = function(app) {
     app.get("/", function(req, res) {
         console.log("Got connection!");
         res.send("Okay");
@@ -11,6 +12,7 @@ module.exports = function(app, passport) {
 
     //Process login form
     app.post("/login", login, function(req, res) {
+        console.log("Got login");
         res.send("Success");
     }
     );
@@ -61,6 +63,51 @@ module.exports = function(app, passport) {
                     var data = JSON.stringify(characters);
                     console.log("Now sending characters..");
                     res.send(data);
+                }
+                else {
+                    res.send("300");
+                }
+            }
+            else {
+                res.send("300");
+            }
+        });
+    });
+
+    app.post("/updatecharacter", login, function(req, res) {
+        console.log("Looking for player's account..");
+        Player.findOne( { "email" : req.body.Email }, function(err, player) {
+            if(player) {
+                console.log("Found account");
+                if(player.validPassword(req.body.Password)) {
+                    console.log("Valid password!");
+                    console.log("Looking for character..");
+                    var charName = req.body.Name;
+                    var id = -1;
+                    for(i = 0; i < player.characters.length; i++) {
+                        var n = player.characters[i]["Name"];
+                        if(n == charName) {
+                            console.log("Found character!");
+                            id = i;
+                            break;
+                        }
+                    }
+                    if(id == -1) {
+                        console.log("Could not find character :^(");
+                        res.send("400");
+                    }
+                    else {
+                        newData = updateCharacter(req.body.Character, req.body.Experience, req.body.Gold);
+                        player.characters[id] = newData;
+                        player.save(function(err) {
+                            if(err) console.log("Error saving character ;.;");
+                            else {
+                                var json = JSON.stringify(newData);
+                                res.send(json);
+                                console.log("Character updated and sent!");
+                            }
+                        });
+                    }
                 }
                 else {
                     res.send("300");
