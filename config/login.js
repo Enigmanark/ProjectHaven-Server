@@ -18,7 +18,7 @@ module.exports = function(req, res, next) {
         }
         else if(player == null){
             console.log("No player found with that email");
-            res.send(404);
+            res.send("300");
         }
     });
 };
