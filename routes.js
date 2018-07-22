@@ -14,13 +14,13 @@ module.exports = function(app) {
         res.set('Access-Control-Allow-Origin', ['*']);
         res.set('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
         res.set('Access-Control-Allow-Headers', 'Content-Type');
-        res.send(200);
+        res.sendStatus(200);
     });
 
     //Process login form
     app.post("/login", login, function(req, res) {
         console.log("Got login");
-        res.send("Success");
+        res.sendStatus(200);
     }
     );
 
@@ -101,7 +101,7 @@ module.exports = function(app) {
                     }
                     if(id == -1) {
                         console.log("Could not find character :^(");
-                        res.send("400");
+                        res.send("404");
                     }
                     else {
                         newData = updateCharacter(req.body.Character, req.body.Experience, req.body.Gold);
@@ -118,11 +118,11 @@ module.exports = function(app) {
                     }
                 }
                 else {
-                    res.send("300");
+                    res.send("401");
                 }
             }
             else {
-                res.send("300");
+                res.send("404");
             }
         });
     });
