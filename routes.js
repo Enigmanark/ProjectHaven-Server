@@ -68,9 +68,14 @@ module.exports = function(app) {
                 if(player.validPassword(req.body.Password)) {
                     console.log("Password is valid!");
                     var characters = player.characters;
-                    var data = JSON.stringify(characters);
-                    console.log("Now sending characters..");
-                    res.send(data);
+                    if(characters.length == 0) {
+                        res.send("2000");
+                    }
+                    else {
+                        var data = JSON.stringify(characters);
+                        console.log("Now sending characters..");
+                        res.send(data);
+                    }
                 }
                 else {
                     res.send("300");
