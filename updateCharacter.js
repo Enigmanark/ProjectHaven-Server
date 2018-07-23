@@ -1,4 +1,4 @@
-import updateHealth from "./updateVitals";
+var updateVitals = require("./updateVitals");
 import updateMana from "./updateVitals";
 import updateStamina from "./updateVitals";
 
@@ -12,9 +12,9 @@ module.exports = function(newChar, originalChar, experience, gold) {
         newData["Level"] += 1;
         newData["TrainingPoints"] += 1;
     }
-    newData = updateHealth(newData);
-    newData = updateMana(newData);
-    newData = updateStamina(newData);
+    newData = updateVitals.updateHealth(newData);
+    newData = updateVitals.updateMana(newData);
+    newData = updateVitals.updateStamina(newData);
     newData["CurrentHP"] = newChar["CurrentHP"];
     newData["CurrentSP"] = newChar["CurrentSP"];
     newData["CurrentMP"] = newChar["CurrentMP"];
