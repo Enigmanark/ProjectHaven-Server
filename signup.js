@@ -10,6 +10,7 @@ module.exports = function(req, res, next) {
         if(err) throw err;
         if(user) { //If we found a user, then signup fails, redirect
             res.send("100");
+            return false;
         }
     });
 
