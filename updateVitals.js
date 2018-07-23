@@ -2,17 +2,17 @@ var healthEnduranceMod = 10;
 var manaIntelligenceMod = 15;
 var staminaEnduranceMod = 2;
 
-var updateHealth = function(stats) {
+function updateHealth(stats) {
     stats["MaxHP"] = stats["BaseHP"] + (stats["Endurance"] * healthEnduranceMod);
     return stats;
 };
 
-var updateMana = function(stats) {
+function updateMana(stats) {
     stats["MaxMP"] = stats["BaseMP"] + (stats["Intelligence"] * manaIntelligenceMod);
     return stats;
 };
 
-var updateStamina = function(stats) {
+function updateStamina(stats) {
     stats["MaxSP"] = stats["BaseSP"] + (stats["Endurance"] * staminaEnduranceMod);
     return stats;
 };
