@@ -1,6 +1,4 @@
 var updateVitals = require("./updateVitals");
-import updateMana from "./updateVitals";
-import updateStamina from "./updateVitals";
 
 module.exports = function(newChar, originalChar, experience, gold) {
     var newData = originalChar;
