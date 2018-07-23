@@ -52,6 +52,9 @@ module.exports = function(app) {
                         newData = req.body.Character;
                         newData = updateCharacter(newData, player.characters[id], 0, 0);
                         newData = train(newData, req.body.TrainingStat);
+                        newData = require("./updateVitals").updateHealth(newData);
+                        newData = require("./updateVitals").updateStamina(newData);
+                        newData = require("./updateVitals").updateMana(newData);
                         newData = recover_all(newData);
                         player.characters[id] = newData;
                         player.markModified("characters");
