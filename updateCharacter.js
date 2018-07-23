@@ -3,10 +3,12 @@ var updateVitals = require("./updateVitals");
 module.exports = function(newChar, originalChar, experience, gold) {
     var newData = originalChar;
     newData["Experience"] += experience;
+    newData["Experience"] = Math.round(newData["Experience"]);
     newData["Gold"] += gold;
     if(newData["Experience"] >= newData["ExperienceToLevelUp"]) {
         newData["Experience"] -= newData["ExperienceToLevelUp"];
         newData["ExperienceToLevelUp"] *= 1.3;
+        newData["ExperienceToLevelUp"] = Math.round(newData["ExperienceToLevelUp"]);
         newData["Level"] += 1;
         newData["TrainingPoints"] += 1;
     }
