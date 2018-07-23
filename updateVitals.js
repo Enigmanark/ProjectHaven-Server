@@ -17,6 +17,6 @@ function updateStamina(stats) {
     return stats;
 };
 
-exports = updateHealth;
-exports = updateMana;
-exports = updateStamina;
+exports = updateHealth();
+exports = updateMana();
+exports = updateStamina();
