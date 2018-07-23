@@ -10,9 +10,9 @@ module.exports = function(newChar, experience, gold) {
         newData["Level"] += 1;
         newData["TrainingPoints"] += 1;
     }
-    newData = updateHealth(newData);
-    newData = updateMana(newData);
-    newData = updateStamina(newData);
-    
+    newData = updateVitals.updateHealth(newData);
+    newData = updateVitals.updateMana(newData);
+    newData = updateVitals.updateStamina(newData);
+
     return newData;
 };
