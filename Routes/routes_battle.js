@@ -4,7 +4,7 @@ var login = require("../config/login");
 module.exports = function(app) {
     app.get("/randombattle", login, function(req, res) {
         var battle = randomBattle();
-        battle = JSON.stringify(battle);
+        console.log("Sending battle data");
         res.send(battle);
     });
 };
