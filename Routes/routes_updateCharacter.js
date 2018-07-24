@@ -130,7 +130,7 @@ module.exports = function(app) {
                         res.send("400");
                     }
                     else {
-                        updateCharacter(req.body.Character, player.characters[id], player, req.body.EnemyID);
+                        updateCharacter(req.body.Character, player.characters[id], player, id, req.body.EnemyID);
                     }
                 }
                 else {

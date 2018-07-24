@@ -1,7 +1,7 @@
 var updateVitals = require("./updateVitals");
 var Enemy = require("../Models/enemy");
 
-module.exports = function(newChar, originalChar, player, enemyID) {
+module.exports = function(newChar, originalChar, player, id, enemyID) {
     Enemy.findOne({ "ID" : enemyID }, function(err, en) {
         if(err) {
             console.log("Query error or database offline or something");
