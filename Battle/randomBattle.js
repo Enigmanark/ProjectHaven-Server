@@ -19,7 +19,9 @@ module.exports = function(res) {
                 rand = Math.floor(Math.random() * enemies.length);
                 var battle = enemies[rand];
                 battle = JSON.stringify(battle);
+                battle = JSON.parse(battle);
                 battle["BattleLocation"] = randLoc;
+                battle = JSON.stringify(battle);
                 console.log("Sending battle data");
                 res.send(battle);
             }
