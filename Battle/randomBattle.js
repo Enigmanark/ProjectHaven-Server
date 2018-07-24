@@ -16,7 +16,8 @@ module.exports = async function() {
             var battle = enemies[rand];
             battle = JSON.stringify(battle);
             battle["BattleLocation"] = randLoc;
-            return battle;
+            console.log("Sending battle data");
+            res.send(battle);
         }
     });
 };
