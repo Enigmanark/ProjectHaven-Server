@@ -13,7 +13,9 @@ module.exports = async function() {
         else {
             var enemies = en;
             rand = Math.floor(Math.random() * enemies.length);
-            return enemies[rand];
+            var battle = enemies[rand];
+            battle["BattleLocation"] = randLoc;
+            return battle;
         }
     });
 };

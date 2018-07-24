@@ -34,7 +34,6 @@ module.exports = async function() {
         e.Light = enemies[i]["Light"];
         e.Dark = enemies[i]["Dark"];
         e.Locations = enemies[i]["Locations"];
-
         //Check if there's an enemy already with that ID
         await Enemy.findOne( { "ID" : e.ID}, await function(err, en) {
             var name = e.Name;
