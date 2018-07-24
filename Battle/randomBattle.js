@@ -2,8 +2,9 @@ var locations = require("../Enemies/enemyLocations");
 var Enemy = require("../Models/enemy");
 
 module.exports = function() {
-    var rand = Math.floor(Math.random() * locations.length);
-    var randLoc = locations[rand];
+    var locs = locations(); 
+    var rand = Math.floor(Math.random() * locs.length);
+    var randLoc = locs[rand];
     console.log(randLoc);
     Enemy.find({}).lean().where('Locations').in([randLoc]).limit(30).exec(function(err, en) {
         if(err) {
