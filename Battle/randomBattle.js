@@ -1,7 +1,7 @@
 var locations = require("../Enemies/enemyLocations");
 var Enemy = require("../Models/enemy");
 
-module.exports = function() {
+module.exports = function(res) {
     var locs = locations(); 
     var rand = Math.floor(Math.random() * locs.length);
     var randLoc = locs[rand];
