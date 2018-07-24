@@ -130,18 +130,7 @@ module.exports = function(app) {
                         res.send("400");
                     }
                     else {
-                        newData = updateCharacter(req.body.Character, player.characters[id],
-                             req.body.Experience, req.body.Gold);
-                        player.characters[id] = newData;
-                        player.markModified("characters");
-                        player.save(function(err) {
-                            if(err) console.log("Error saving character ;.;");
-                            else {
-                                var json = JSON.stringify(newData);
-                                res.send(json);
-                                console.log("Character updated and sent!");
-                            }
-                        });
+                        updateCharacter(req.body.Character, player.characters[id], player, req.body.EnemyID);
                     }
                 }
                 else {
