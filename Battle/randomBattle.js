@@ -5,6 +5,8 @@ module.exports = function() {
     var locs = locations(); 
     var rand = Math.floor(Math.random() * locs.length);
     var randLoc = locs[rand];
+    console.log(locs);
+    console.log(rand);
     console.log(randLoc);
     Enemy.find({}).lean().where('Locations').in([randLoc]).limit(30).exec(function(err, en) {
         if(err) {
