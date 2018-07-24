@@ -25,6 +25,7 @@ module.exports = async function() {
         e.Willpower = enemies[i]["Willpower"];
         e.MinDamage = enemies[i]["MinDamage"];
         e.MaxDamage = enemies[i]["MaxDamage"];
+        e.AttackElement = enemies[i]["AttackElement"];
         e.Earth = enemies[i]["Earth"];
         e.Water = enemies[i]["Water"];
         e.Air = enemies[i]["Air"];
