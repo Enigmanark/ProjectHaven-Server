@@ -10,7 +10,7 @@ module.exports = async function() {
             console.log("Query error or database offline or something");
             res.send("801");
         }
-        else {
+        else if(en){
             var enemies = en;
             rand = Math.floor(Math.random() * enemies.length);
             var battle = enemies[rand];
@@ -18,6 +18,10 @@ module.exports = async function() {
             battle["BattleLocation"] = randLoc;
             console.log("Sending battle data");
             res.send(battle);
+        }
+        else {
+            console.log("Couldn't find a random battle with those search queries");
+            res.send("802");
         }
     });
 };
