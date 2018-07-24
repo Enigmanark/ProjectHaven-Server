@@ -31,22 +31,26 @@ module.exports = function(app) {
                     }
                     else {
                         newData = req.body.Character;
-                        newData = updateCharacter(newData, player.characters[id], 0, 0);
                         newData = train(newData, req.body.TrainingStat);
-                        newData = require("./updateVitals").updateHealth(newData);
-                        newData = require("./updateVitals").updateStamina(newData);
-                        newData = require("./updateVitals").updateMana(newData);
-                        newData = recover_all(newData);
-                        player.characters[id] = newData;
-                        player.markModified("characters");
-                        player.save(function(err) {
-                            if(err) console.log("Error saving character ;.;");
-                            else {
-                                var json = JSON.stringify(newData);
-                                res.send(json);
-                                console.log("Character updated and sent!");
-                            }
-                        });
+                        if(newData == null) {
+                            res.send("502");
+                        }
+                        else {
+                            newData = require("../CharacterData/updateVitals").updateHealth(newData);
+                            newData = require("../CharacterData/updateVitals").updateStamina(newData);
+                            newData = require("../CharacterData/updateVitals").updateMana(newData);
+                            newData = recover_all(newData);
+                            player.characters[id] = newData;
+                            player.markModified("characters");
+                            player.save(function(err) {
+                                if(err) console.log("Error saving character ;.;");
+                                else {
+                                    var json = JSON.stringify(newData);
+                                    res.send(json);
+                                    console.log("Character updated and sent!");
+                                }
+                            });
+                        }
                     }
                 }
                 else {

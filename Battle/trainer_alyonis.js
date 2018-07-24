@@ -3,7 +3,7 @@ var Player = require("../Models/player");
 module.exports = function(req, res) {
     var email = req.body.Email;
     var password = req.body.Password;
-    var playerName = req.body.PlayerName;
+    var playerName = req.body.CharacterName;
     var stat = req.body.ToTrain;
     
     console.log("Looking for player's account");
@@ -150,19 +150,22 @@ module.exports = function(req, res) {
     }
 
     function scale_hp(trainer){
+        console.log(require("../CharacterData/attributeModifiers").healthEnduranceMod);
         trainer["MaxHP"] = trainer["BaseHP"] + (trainer["Endurance"] * 
             require("../CharacterData/attributeModifiers").healthEnduranceMod);
         return trainer;
     }
 
     function scale_sp(trainer){
-        return trainer["MaxSP"] = trainer["BaseSP"] + (trainer["Endurance"] *
+        trainer["MaxSP"] = trainer["BaseSP"] + (trainer["Endurance"] *
             require("../CharacterData/attributeModifiers").staminaEnduranceMod);
+        return trainer;
     }
 
     function scale_mp(trainer) {
         trainer["MaxMP"] = trainer["BaseMP"] + (trainer["Intelligence"] *
-            require("../CharacterData/attributeModifiers").manIntelligenceMod);
+            require("../CharacterData/attributeModifiers").manaIntelligenceMod);
+        return trainer;
     }
 
     function apply_damage_level(playerLevel, trainer) {
@@ -180,6 +183,7 @@ module.exports = function(req, res) {
     }
     function get_base_alyonis_battle(playerLevel) {
         var alyonis = {};
+        alyonis["ID"] = -1;
         alyonis["Level"] = playerLevel+1;
         alyonis["Experience"] = 0;
         alyonis["Gold"] = 0;

@@ -1,5 +1,7 @@
-healthEnduranceMod = 10;
-staminaEnduranceMod = 2;
-manaIntelligenceMod = 15;
+var healthEnduranceMod = 10;
+var staminaEnduranceMod = 2;
+var manaIntelligenceMod = 15;
 
-exports = { healthEnduranceMod, staminaEnduranceMod, manaIntelligenceMod };
+exports.healthEnduranceMod = healthEnduranceMod;
+exports.staminaEnduranceMod = staminaEnduranceMod;
+exports.manaIntelligenceMod = manaIntelligenceMod;

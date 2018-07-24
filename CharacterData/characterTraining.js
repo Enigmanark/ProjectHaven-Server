@@ -4,49 +4,67 @@ module.exports = function(newChar, trainingStat) {
         var original = newData["Strength"];
         var newStat = original + 5;
         var cost = calculateCost(newStat);
-        newChar["Gold"] -= cost;
-        newChar["Strength"] = newStat;
-        return newData;
+        if(newChar["Gold"] >= cost) {
+            newChar["Gold"] -= cost;
+            newChar["Strength"] = newStat;
+            return newData;
+        }
+        else return null;
     }
     else if(trainingStat == "Endurance") {
         var original = newData["Endurance"];
         var newStat = original + 5;
         var cost = calculateCost(newStat);
-        newChar["Gold"] -= cost;
-        newChar["Endurance"] = newStat;
-        return newData;
+        if(newChar["Gold"] >= cost) {
+            newChar["Gold"] -= cost;
+            newChar["Endurance"] = newStat;
+            return newData;
+        }
+        else return null;
     }
     else if(trainingStat == "Dexterity") {
         var original = newData["Dexterity"];
         var newStat = original + 5;
         var cost = calculateCost(newStat);
-        newChar["Gold"] -= cost;
-        newChar["Dexterity"] = newStat;
-        return newData;
+        if(newChar["Gold"] >= cost) {
+            newChar["Gold"] -= cost;
+            newChar["Dexterity"] = newStat;
+            return newData;
+        }
+        else return null;
     }
     else if(trainingStat == "Intelligence") {
         var original = newData["Intelligence"];
         var newStat = original + 5;
         var cost = calculateCost(newStat);
-        newChar["Gold"] -= cost;
-        newChar["Intelligence"] = newStat;
-        return newData;
+        if(newChar["Gold"] >= cost) {
+            newChar["Gold"] -= cost;
+            newChar["Intelligence"] = newStat;
+            return newData;
+        }
+        else return null;
     }
     else if(trainingStat == "Willpower") {
         var original = newData["Willpower"];
         var newStat = original + 5;
         var cost = calculateCost(newStat);
-        newChar["Gold"] -= cost;
-        newChar["Willpower"] = newStat;
-        return newData;
+        if(newChar["Gold"] >= cost) {
+            newChar["Gold"] -= cost;
+            newChar["Willpower"] = newStat;
+            return newData;
+        }
+        else return null;
     }
     else if(trainingStat == "Agility") {
         var original = newData["Agility"];
         var newStat = original + 5;
         var cost = calculateCost(newStat);
-        newChar["Gold"] -= cost;
-        newChar["Agility"] = newStat;
-        return newData;
+        if(newChar["Gold"] >= cost) {
+            newChar["Gold"] -= cost;
+            newChar["Agility"] = newStat;
+            return newData;
+        }
+        else return null;
     }
 
     function calculateCost(attribute) {
