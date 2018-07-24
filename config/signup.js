@@ -1,4 +1,4 @@
-var Player = require("./Models/player.js");
+var Player = require("../Models/player.js");
 
 module.exports = function(req, res, next) {
     var json = req.body;
