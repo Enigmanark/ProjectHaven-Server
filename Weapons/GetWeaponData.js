@@ -1,14 +1,20 @@
 var Weapon = require("../Models/weapon");
 
 module.exports = async function(req, res, character) {
+    console.log("About to check the database");
     var wepArray = character["Inventory"]["Weapons"];
     await Weapon.find({}).where('ID').in([wepArray[0], wepArray[1],
         wepArray[2], wepArray[3], wepArray[4], wepArray[5], wepArray[6], 
         wepArray[7], wepArray[8], wepArray[9], ]).exec(function(err, weapons) {
-		if(err) throw err;
+		if(err) {
+            console.log("Got a database error in GetWeaponData");
+            throw err;
+        }
+        console.log("No database error, continuing");
 		if(weapons.length > 0) {
             var newWepArray = [];
 			for(i = 0; i < 10; i++) {
+                console.log("Checking " + weapons[i]);
                 if(weapons[i] == null) {
                     newWepArray[i] = null;
                 }
