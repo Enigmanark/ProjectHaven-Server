@@ -1,7 +1,7 @@
 var Weapon = require("../Models/weapon");
 
 module.exports = async function(req, res, character) {
-    console.log("About to check the database");
+    console.log("About to check the weapon database");
     var wepArray = character["Inventory"]["Weapons"];
     await Weapon.find({}).where('ID').in([wepArray[0], wepArray[1],
         wepArray[2], wepArray[3], wepArray[4], wepArray[5], wepArray[6], 
@@ -32,7 +32,6 @@ module.exports = async function(req, res, character) {
             character["Inventory"]["Weapons"] = newWepArray;
             character = JSON.stringify(character);
             res.send(character);
-            console.log(newWepArray);
             console.log("Character sent!");
 		}
 		else { 
