@@ -1,6 +1,7 @@
 var updateVitals = require("./updateVitals");
 var Enemy = require("../Models/enemy");
 var updateWeapons = require("../Weapons/GetWeaponData");
+var train = require("../CharacterData/characterTraining");
 
 module.exports = function(req, res, newChar, originalChar, player, id, enemyID) {
     /*/

@@ -3,7 +3,6 @@ var Player = require("../Models/player");
 var login = require("../config/login");
 var updateCharacter = require("../CharacterData/updateCharacter");
 var recover_all = require("../CharacterData/character_recover_all");
-var train = require("../CharacterData/characterTraining");
 
 module.exports = function(app) {
 
