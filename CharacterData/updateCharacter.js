@@ -12,7 +12,12 @@ module.exports = function(req, res, newChar, originalChar, player, id, enemyID) 
         newData["CurrentSP"] = newChar["CurrentSP"];
         newData["CurrentMP"] = newChar["CurrentMP"];
         newData["CurrentWeaponID"] = newChar["CurrentWeaponID"];
-        newData["Inventory"] = newChar["Inventory"];
+        /*/
+            Update Inventory here
+        /*/
+        newData["Inventory"]["HealthPotions"] = newChar["Inventory"]["HealthPotions"];
+        newData["Inventory"]["StaminaPotions"] = newChar["Inventory"]["StaminaPotions"];
+        newData["Inventory"]["ManaPotions"] = newChar["Inventory"]["ManaPotions"];
         player.characters[id] = newData;
         player.markModified("characters");
         player.save(function(err) {

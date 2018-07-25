@@ -30,7 +30,8 @@ module.exports = function(app) {
                         res.send("400");
                     }
                     else {
-                        newData = req.body.Character;
+                        newData = updateCharacter(req, res, req.body.Character, player.characters[id],
+                            player, id, -1);
                         newData = train(newData, req.body.TrainingStat);
                         if(newData == null) {
                             res.send("502");
