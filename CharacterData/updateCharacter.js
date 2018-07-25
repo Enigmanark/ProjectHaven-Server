@@ -7,7 +7,7 @@ module.exports = function(req, res, newChar, originalChar, player, id, enemyID) 
     /*/
         For training with Alyonis
     /*/
-    if(enemyID == -1) {
+    if(enemyID == "Training") {
         var newData = originalChar;
         newData = updateVitals.updateHealth(newData);
         newData = updateVitals.updateMana(newData);
@@ -25,6 +25,7 @@ module.exports = function(req, res, newChar, originalChar, player, id, enemyID) 
 
         newData = train(newData, req.body.TrainingStat);
         if(newData == null) {
+            console.log("Train failed to update character");
             res.send("502");
         }
         else {
@@ -44,7 +45,30 @@ module.exports = function(req, res, newChar, originalChar, player, id, enemyID) 
             });
         }
     }
-    
+    else if(enemyID == -1) {
+        newData = updateVitals.updateHealth(newData);
+        newData = updateVitals.updateMana(newData);
+        newData = updateVitals.updateStamina(newData);
+        newData["CurrentHP"] = newChar["CurrentHP"];
+        newData["CurrentSP"] = newChar["CurrentSP"];
+        newData["CurrentMP"] = newChar["CurrentMP"];
+        newData["CurrentWeaponID"] = newChar["CurrentWeaponID"];
+        /*/
+        Update Inventory here
+        /*/
+        newData["Inventory"]["HealthPotions"] = newChar["Inventory"]["HealthPotions"];
+        newData["Inventory"]["StaminaPotions"] = newChar["Inventory"]["StaminaPotions"];
+        newData["Inventory"]["ManaPotions"] = newChar["Inventory"]["ManaPotions"];
+        player.characters[id] = newData;
+        player.markModified("characters");
+        player.save(function(err) {
+            if(err) console.log("Error saving character ;.;");
+            else {
+                updateWeapons(req, res, newData);
+            }
+        });
+    }
+
     else {
         Enemy.findOne({ "ID" : enemyID }, function(err, en) {
             if(err) {
