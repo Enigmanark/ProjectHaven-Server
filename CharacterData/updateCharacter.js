@@ -46,6 +46,7 @@ module.exports = function(req, res, newChar, originalChar, player, id, enemyID) 
         }
     }
     else if(enemyID == -1) {
+        var newData = originalChar;
         newData = updateVitals.updateHealth(newData);
         newData = updateVitals.updateMana(newData);
         newData = updateVitals.updateStamina(newData);
