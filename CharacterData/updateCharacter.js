@@ -2,6 +2,7 @@ var updateVitals = require("./updateVitals");
 var Enemy = require("../Models/enemy");
 var updateWeapons = require("../Weapons/GetWeaponData");
 var train = require("../CharacterData/characterTraining");
+var recover_all = require("../CharacterData/character_recover_all");
 
 module.exports = function(req, res, newChar, originalChar, player, id, enemyID) {
     /*/
@@ -45,6 +46,9 @@ module.exports = function(req, res, newChar, originalChar, player, id, enemyID) 
             });
         }
     }
+    /*/
+        For battles that don't give experience
+    /*/
     else if(enemyID == -1) {
         var newData = originalChar;
         newData = updateVitals.updateHealth(newData);
