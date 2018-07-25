@@ -39,9 +39,7 @@ module.exports = function(req, res, newChar, originalChar, player, id, enemyID) 
             player.save(function(err) {
                 if(err) console.log("Error saving character ;.;");
                 else {
-                    var json = JSON.stringify(newData);
-                    res.send(json);
-                    console.log("Character updated and sent!");
+                    updateWeapons(req, res, newData);
                 }
             });
         }
