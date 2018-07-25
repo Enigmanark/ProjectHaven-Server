@@ -2,6 +2,7 @@ var characterJSON = require("../CharacterData/characterJSON");
 var signup = require("../config/signup");
 var Player = require("../Models/player");
 var login = require("../config/login");
+var beginnerInventory = require("../CharacterData/inventoryJSON");
 
 module.exports = function(app) {
     app.get("/", function(req, res) {
@@ -23,9 +24,9 @@ module.exports = function(app) {
     }
     );
 
-    app.post("/makecharacter", login, function(req, res) {
+    app.post("/makecharacter", login, async function(req, res) {
         console.log("Looking for player's account..");
-        Player.findOne( { "email" : req.body.Email }, function(err, player) {
+        await Player.findOne( { "email" : req.body.Email }, async function(err, player) {
             if(player) {
                 console.log("Found player's account");
                 if(player.validPassword(req.body.Password)) {
@@ -38,14 +39,15 @@ module.exports = function(app) {
                         console.log("Attempting to create character");
                         var charData = characterJSON;
                         charData["Name"] = req.body.Name;
-                        characters.push(charData);
+                        charData["Inventory"] = beginnerInventory();
+                        player.characters.push(charData);
+                        player.markModified("characters");
                         player.save(function(err) {
-                            if(err) {
-                                throw err;
+                            if(err) throw err;
+                            else {
+                                res.send("500");
                             }
-                            console.log("Character created!");
-                            res.send("500");
-                        })
+                        });
                     }
                 }
                 else {

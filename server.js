@@ -15,4 +15,5 @@ require('./Routes/routes_updateCharacter.js')(app);
 app.listen(port);
 
 //require("./Enemies/loadEnemiesIntoDB")();
+//require("./Weapons/loadWeaponsIntoDB")();
 console.log("Project Haven Server now listening on port " + port);

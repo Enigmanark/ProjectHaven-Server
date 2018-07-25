@@ -134,7 +134,8 @@ module.exports = function(app) {
                         res.send("400");
                     }
                     else {
-                        updateCharacter(res, req.body.Character, player.characters[id], player, id, req.body.EnemyID);
+                        updateCharacter(req, res, req.body.Character, 
+                            player.characters[id], player, id, req.body.EnemyID);
                     }
                 }
                 else {
@@ -171,9 +172,8 @@ module.exports = function(app) {
                         res.send("400");
                     }
                     else {
-                        chosenCharacter = JSON.stringify(chosenCharacter);
-                        res.send(chosenCharacter);
-                        console.log("Character sent!");
+                        //The rest of the script executes in Get Weapon Data
+                        require("../Weapons/GetWeaponData")(req, res, chosenCharacter);
                     }
                 }
                 else {

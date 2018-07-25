@@ -1,3 +1,4 @@
+
 module.exports = function() {
     var weps = [];
 	weps.push(1);
@@ -10,11 +11,12 @@ module.exports = function() {
 	weps.push(8);
 	weps.push(null);
 	weps.push(null);
-	var inv = {
+
+	var inventory = {
 		"Weapons" : weps,
-		"HealthPotions" : 2,
+		"HealthPotions": 2,
 		"ManaPotions" : 2,
-		"StaminaPotions" : 2
+		"StaminaPotions" : 2,
 	};
-	return inv;
-}
+	return inventory;
+};
