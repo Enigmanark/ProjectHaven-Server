@@ -2,7 +2,7 @@ var character = {
     "Name" : "",
     "Level" : 0,
     "Experience" : 0,
-    "Gold" : 0,
+    "Gold" : 100,
     "ExperienceToLevelUp" : 100,
     "TrainingPoints" : 0,
     "BaseHP" : 50,
