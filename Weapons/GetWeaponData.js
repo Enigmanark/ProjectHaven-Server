@@ -26,7 +26,7 @@ module.exports = async function(req, res, character) {
             character["Inventory"]["Weapons"] = newWepArray;
             character = JSON.stringify(character);
             res.send(character);
-            console.log("Weapon Array is " + newWepArray.length);
+            console.log(newWepArray);
             console.log("Character sent!");
 		}
 		else { 
