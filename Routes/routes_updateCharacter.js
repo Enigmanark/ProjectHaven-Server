@@ -30,7 +30,7 @@ module.exports = function(app) {
                     }
                     else {
                         newData = updateCharacter(req, res, req.body.Character, player.characters[id],
-                            player, id, -1);
+                            player, id, "Training");
                     }
                 }
                 else {
