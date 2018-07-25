@@ -6,6 +6,7 @@ module.exports = function(newChar, trainingStat) {
         var cost = calculateCost(newStat);
         if(newChar["Gold"] >= cost) {
             newChar["Gold"] -= cost;
+            newChar["TrainingPoints"] -= 1;
             newChar["Strength"] = newStat;
             return newData;
         }
@@ -17,6 +18,7 @@ module.exports = function(newChar, trainingStat) {
         var cost = calculateCost(newStat);
         if(newChar["Gold"] >= cost) {
             newChar["Gold"] -= cost;
+            newChar["TrainingPoints"] -= 1;
             newChar["Endurance"] = newStat;
             return newData;
         }
@@ -28,6 +30,7 @@ module.exports = function(newChar, trainingStat) {
         var cost = calculateCost(newStat);
         if(newChar["Gold"] >= cost) {
             newChar["Gold"] -= cost;
+            newChar["TrainingPoints"] -= 1;
             newChar["Dexterity"] = newStat;
             return newData;
         }
@@ -39,6 +42,7 @@ module.exports = function(newChar, trainingStat) {
         var cost = calculateCost(newStat);
         if(newChar["Gold"] >= cost) {
             newChar["Gold"] -= cost;
+            newChar["TrainingPoints"] -= 1;
             newChar["Intelligence"] = newStat;
             return newData;
         }
@@ -50,6 +54,7 @@ module.exports = function(newChar, trainingStat) {
         var cost = calculateCost(newStat);
         if(newChar["Gold"] >= cost) {
             newChar["Gold"] -= cost;
+            newChar["TrainingPoints"] -= 1;
             newChar["Willpower"] = newStat;
             return newData;
         }
@@ -61,6 +66,7 @@ module.exports = function(newChar, trainingStat) {
         var cost = calculateCost(newStat);
         if(newChar["Gold"] >= cost) {
             newChar["Gold"] -= cost;
+            newChar["TrainingPoints"] -= 1;
             newChar["Agility"] = newStat;
             return newData;
         }
