@@ -32,6 +32,8 @@ var character = {
     "Light" : .95,
     "Dark" : .95,
     "CurrentWeaponID" : 1,
+    "CurrentArmorID" : 1,
+    "currentShieldID" : 1,
 }
 
 module.exports = character;
