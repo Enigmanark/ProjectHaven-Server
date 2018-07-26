@@ -42,7 +42,7 @@ module.exports = async function(req, res, character) {
                     throw err;
                 }
                 console.log("No database error, continuing");
-                if(armorss.length > 0) {
+                if(armors.length > 0) {
                     var newArmorArray = [];
                     for(i = 0; i < 10; i++) {
                         console.log("Checking " + armors[i]);
