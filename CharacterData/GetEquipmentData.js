@@ -47,16 +47,16 @@ module.exports = async function(req, res, character) {
                         if(armors[i] == null) {
                             newArmorArray[i] = null;
                         }
-                        else if(armors[i]["ID"] == wepArray[0]) newArmorArray[0] = JSON.parse(JSON.stringify(armors[i]));
-                        else if(armors[i]["ID"] == wepArray[1]) newArmorArray[1] = JSON.parse(JSON.stringify(armors[i]));
-                        else if(armors[i]["ID"] == wepArray[2]) newArmorArray[2] = JSON.parse(JSON.stringify(armors[i])); 
-                        else if(armors[i]["ID"] == wepArray[3]) newArmorArray[3] = JSON.parse(JSON.stringify(armors[i])); 
-                        else if(armors[i]["ID"] == wepArray[4]) newArmorArray[4] = JSON.parse(JSON.stringify(armors[i])); 
-                        else if(armors[i]["ID"] == wepArray[5]) newArmorArray[5] = JSON.parse(JSON.stringify(armors[i])); 
-                        else if(armors[i]["ID"] == wepArray[6]) newArmorArray[6] = JSON.parse(JSON.stringify(armors[i])); 
-                        else if(armors[i]["ID"] == wepArray[7]) newArmorArray[7] = JSON.parse(JSON.stringify(armors[i])); 
-                        else if(armors[i]["ID"] == wepArray[8]) newArmorArray[8] = JSON.parse(JSON.stringify(armors[i])); 
-                        else if(armors[i]["ID"] == wepArray[9]) newArmorArray[9] = JSON.parse(JSON.stringify(armors[i]));
+                        else if(armors[i]["ID"] == armorArray[0]) newArmorArray[0] = JSON.parse(JSON.stringify(armors[i]));
+                        else if(armors[i]["ID"] == armorArray[1]) newArmorArray[1] = JSON.parse(JSON.stringify(armors[i]));
+                        else if(armors[i]["ID"] == armorArray[2]) newArmorArray[2] = JSON.parse(JSON.stringify(armors[i])); 
+                        else if(armors[i]["ID"] == armorArray[3]) newArmorArray[3] = JSON.parse(JSON.stringify(armors[i])); 
+                        else if(armors[i]["ID"] == armorArray[4]) newArmorArray[4] = JSON.parse(JSON.stringify(armors[i])); 
+                        else if(armors[i]["ID"] == armorArray[5]) newArmorArray[5] = JSON.parse(JSON.stringify(armors[i])); 
+                        else if(armors[i]["ID"] == armorArray[6]) newArmorArray[6] = JSON.parse(JSON.stringify(armors[i])); 
+                        else if(armors[i]["ID"] == armorArray[7]) newArmorArray[7] = JSON.parse(JSON.stringify(armors[i])); 
+                        else if(armors[i]["ID"] == armorArray[8]) newArmorArray[8] = JSON.parse(JSON.stringify(armors[i])); 
+                        else if(armors[i]["ID"] == armorArray[9]) newArmorArray[9] = JSON.parse(JSON.stringify(armors[i]));
                     }
                     character["Inventory"]["Armors"] = newArmorArray;
                     console.log("Got armor data");
@@ -91,7 +91,6 @@ module.exports = async function(req, res, character) {
                             character = JSON.stringify(character);
                             console.log("Got shield data");
 
-                            console.log(character);
                             res.send(character);
                             console.log("Character sent!");
                         }
