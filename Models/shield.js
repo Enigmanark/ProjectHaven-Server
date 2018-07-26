@@ -1,8 +1,11 @@
+var mongoose = require('mongoose');
 var shieldSchema = new mongoose.Schema({
     Name: String,
+    ID : Number,
     Path : String,
     Level : Number,
     Gold : Number,
+    Description: String,
     MeleeDef : Number,
     RangedDef : Number,
     SpellDef : Number,
