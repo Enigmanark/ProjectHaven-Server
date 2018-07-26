@@ -9,6 +9,8 @@ var armorSchema = new mongoose.Schema({
     Path : String,
     ArmPath : String,
     Description: String,
+    BonusAccuracy : Number,
+    BonusCrit : Number,
     Level : Number,
     Gold : Number,
     Earth : Number,

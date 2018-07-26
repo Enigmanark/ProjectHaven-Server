@@ -1,6 +1,6 @@
 var updateVitals = require("./updateVitals");
 var Enemy = require("../Models/enemy");
-var updateWeapons = require("../Weapons/GetWeaponData");
+var updateEquipment = require("./GetEquipmentData");
 var train = require("../CharacterData/characterTraining");
 var recover_all = require("../CharacterData/character_recover_all");
 
@@ -39,7 +39,7 @@ module.exports = function(req, res, newChar, originalChar, player, id, enemyID) 
             player.save(function(err) {
                 if(err) console.log("Error saving character ;.;");
                 else {
-                    updateWeapons(req, res, newData);
+                    updateEquipment(req, res, newData);
                 }
             });
         }
@@ -67,11 +67,13 @@ module.exports = function(req, res, newChar, originalChar, player, id, enemyID) 
         player.save(function(err) {
             if(err) console.log("Error saving character ;.;");
             else {
-                updateWeapons(req, res, newData);
+                updateEquipment(req, res, newData);
             }
         });
     }
-
+    /*/
+    For enemies that do give experience and gold
+    /*/
     else {
         Enemy.findOne({ "ID" : enemyID }, function(err, en) {
             if(err) {
@@ -110,7 +112,7 @@ module.exports = function(req, res, newChar, originalChar, player, id, enemyID) 
                 player.save(function(err) {
                     if(err) console.log("Error saving character ;.;");
                     else {
-                        updateWeapons(req, res, newData);
+                        updateEquipment(req, res, newData);
                     }
                 });
             }
