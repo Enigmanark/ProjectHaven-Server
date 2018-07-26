@@ -153,7 +153,7 @@ module.exports = function(app) {
                     }
                     else {
                         //The rest of the script executes in Get Weapon Data
-                        require("../Weapons/GetWeaponData")(req, res, chosenCharacter);
+                        require("../CharacterData/GetEquipmentData")(req, res, chosenCharacter);
                     }
                 }
                 else {
