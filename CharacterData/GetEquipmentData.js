@@ -15,7 +15,6 @@ module.exports = async function(req, res, character) {
 		if(weapons.length > 0) {
             var newWepArray = [];
 			for(i = 0; i < 10; i++) {
-                console.log("Checking " + weapons[i]);
                 if(weapons[i] == null) {
                     newWepArray[i] = null;
                 }
@@ -45,7 +44,6 @@ module.exports = async function(req, res, character) {
                 if(armors.length > 0) {
                     var newArmorArray = [];
                     for(i = 0; i < 10; i++) {
-                        console.log("Checking " + armors[i]);
                         if(armors[i] == null) {
                             newArmorArray[i] = null;
                         }
@@ -75,7 +73,6 @@ module.exports = async function(req, res, character) {
                         if(shields.length > 0) {
                             var newShieldArray = [];
                             for(i = 0; i < 10; i++) {
-                                console.log("Checking " + shields[i]);
                                 if(shields[i] == null) {
                                     newShieldArray[i] = null;
                                 }
@@ -93,6 +90,8 @@ module.exports = async function(req, res, character) {
                             character["Inventory"]["Shields"] = newShieldArray;
                             character = JSON.stringify(character);
                             console.log("Got shield data");
+
+                            console.log(character);
                             res.send(character);
                             console.log("Character sent!");
                         }
