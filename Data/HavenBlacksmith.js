@@ -12,7 +12,7 @@ module.exports = async function (req, res) {
     weapons.push(6);
     weapons.push(7);
     weapons.push(8);
-    weapons.push(9);
+    weapons.push(null);
     weapons.push(null);
     weapons.push(null);
 
