@@ -9,20 +9,7 @@ module.exports = function(req, res, newChar, originalChar, player, id, enemyID) 
         For training with Alyonis
     /*/
     if(enemyID == "Training") {
-        var newData = originalChar;
-        newData = updateVitals.updateHealth(newData);
-        newData = updateVitals.updateMana(newData);
-        newData = updateVitals.updateStamina(newData);
-        newData["CurrentHP"] = newChar["CurrentHP"];
-        newData["CurrentSP"] = newChar["CurrentSP"];
-        newData["CurrentMP"] = newChar["CurrentMP"];
-        newData["CurrentWeaponID"] = newChar["CurrentWeaponID"];
-        /*/
-            Update Inventory here
-        /*/
-        newData["Inventory"]["HealthPotions"] = newChar["Inventory"]["HealthPotions"];
-        newData["Inventory"]["StaminaPotions"] = newChar["Inventory"]["StaminaPotions"];
-        newData["Inventory"]["ManaPotions"] = newChar["Inventory"]["ManaPotions"];
+        var newData = update_base(originalChar);
 
         newData = train(newData, req.body.TrainingStat);
         if(newData == null) {
@@ -48,20 +35,8 @@ module.exports = function(req, res, newChar, originalChar, player, id, enemyID) 
         For battles that don't give experience
     /*/
     else if(enemyID == -1) {
-        var newData = originalChar;
-        newData = updateVitals.updateHealth(newData);
-        newData = updateVitals.updateMana(newData);
-        newData = updateVitals.updateStamina(newData);
-        newData["CurrentHP"] = newChar["CurrentHP"];
-        newData["CurrentSP"] = newChar["CurrentSP"];
-        newData["CurrentMP"] = newChar["CurrentMP"];
-        newData["CurrentWeaponID"] = newChar["CurrentWeaponID"];
-        /*/
-        Update Inventory here
-        /*/
-        newData["Inventory"]["HealthPotions"] = newChar["Inventory"]["HealthPotions"];
-        newData["Inventory"]["StaminaPotions"] = newChar["Inventory"]["StaminaPotions"];
-        newData["Inventory"]["ManaPotions"] = newChar["Inventory"]["ManaPotions"];
+        var newData = update_base(originalChar);
+
         player.characters[id] = newData;
         player.markModified("characters");
         player.save(function(err) {
@@ -94,19 +69,7 @@ module.exports = function(req, res, newChar, originalChar, player, id, enemyID) 
                     newData["Level"] += 1;
                     newData["TrainingPoints"] += 1;
                 }
-                newData = updateVitals.updateHealth(newData);
-                newData = updateVitals.updateMana(newData);
-                newData = updateVitals.updateStamina(newData);
-                newData["CurrentHP"] = newChar["CurrentHP"];
-                newData["CurrentSP"] = newChar["CurrentSP"];
-                newData["CurrentMP"] = newChar["CurrentMP"];
-                newData["CurrentWeaponID"] = newChar["CurrentWeaponID"];
-                /*/
-                Update Inventory here
-                /*/
-                newData["Inventory"]["HealthPotions"] = newChar["Inventory"]["HealthPotions"];
-                newData["Inventory"]["StaminaPotions"] = newChar["Inventory"]["StaminaPotions"];
-                newData["Inventory"]["ManaPotions"] = newChar["Inventory"]["ManaPotions"];
+                newData = update_base(newData);
                 player.characters[id] = newData;
                 player.markModified("characters");
                 player.save(function(err) {
@@ -121,5 +84,26 @@ module.exports = function(req, res, newChar, originalChar, player, id, enemyID) 
                 res.send("803");
             }
         });
+    }
+
+    function update_base(data) {
+        var newData = data;
+        newData = updateVitals.updateHealth(newData);
+        newData = updateVitals.updateMana(newData);
+        newData = updateVitals.updateStamina(newData);
+        newData["CurrentHP"] = newChar["CurrentHP"];
+        newData["CurrentSP"] = newChar["CurrentSP"];
+        newData["CurrentMP"] = newChar["CurrentMP"];
+        newData["CurrentWeaponID"] = newChar["CurrentWeaponID"];
+        newData["CurrentShieldID"] = newChar["CurrentShieldID"];
+        newData["CurrentArmorID"] = newChar["CurrentArmorID"];
+        /*/
+            Update Inventory here
+        /*/
+        newData["Inventory"]["HealthPotions"] = newChar["Inventory"]["HealthPotions"];
+        newData["Inventory"]["StaminaPotions"] = newChar["Inventory"]["StaminaPotions"];
+        newData["Inventory"]["ManaPotions"] = newChar["Inventory"]["ManaPotions"];
+
+        return newData;
     }
 };
