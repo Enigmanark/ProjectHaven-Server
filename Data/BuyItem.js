@@ -61,7 +61,7 @@ module.exports = function(req, res) {
                                 if(has_enough_gold(char, arm)) {
                                     console.log("Bought armor");
                                     char["Inventory"]["Armors"][slot] = arm["ID"];
-                                    updateCharacter(req, res, char, player.characters[i], player, i, "Shop", arm["Gold"]);
+                                    updateCharacter(req, res, char, player.characters[index], player, index, "Shop", arm["Gold"]);
                                 }
                                 else res.send("606");
                             }
@@ -78,7 +78,7 @@ module.exports = function(req, res) {
                                 if(has_enough_gold(char, shil)) {
                                     console.log("Bought shield");
                                     char["Inventory"]["Shields"][slot] = shil["ID"];
-                                    updateCharacter(req, res, char, player.characters[i], player, i, "Shop", shil["Gold"]);  
+                                    updateCharacter(req, res, char, player.characters[index], player, index, "Shop", shil["Gold"]);  
                                 }
                                 else res.send("606");
                             }
