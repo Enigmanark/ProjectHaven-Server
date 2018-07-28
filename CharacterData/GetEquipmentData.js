@@ -45,7 +45,7 @@ module.exports = async function(req, res, character) {
                         newArmorArray[k] = null;
                     }
                     for(i = 0; i < 10; i++) {
-                        var armor = armorss[i];
+                        var armor = armors[i];
                         if(armor != null) {
                             for(j = 0; j < armorArray.length; j++) {
                                 if(armor["ID"] == armorArray[j]) {
