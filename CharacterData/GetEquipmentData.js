@@ -48,7 +48,7 @@ module.exports = async function(req, res, character) {
                         if(armorArray[i] == null) {
                             newArmorArray[i] = null;
                         }
-                        else if(armors[i] != null) { }
+                        else if(armors[i] == null) { }
                         else if(armors[i]["ID"] == armorArray[0]) newArmorArray[0] = JSON.parse(JSON.stringify(armors[i]));
                         else if(armors[i]["ID"] == armorArray[1]) newArmorArray[1] = JSON.parse(JSON.stringify(armors[i]));
                         else if(armors[i]["ID"] == armorArray[2]) newArmorArray[2] = JSON.parse(JSON.stringify(armors[i])); 
@@ -78,7 +78,7 @@ module.exports = async function(req, res, character) {
                                 if(shieldArray[i] == null) {
                                     newShieldArray[i] = null;
                                 }
-                                else if(shields[i] != null) { }
+                                else if(shields[i] == null) { }
                                 else if(shields[i]["ID"] == shieldArray[0]) newShieldArray[0] = JSON.parse(JSON.stringify(shields[i]));
                                 else if(shields[i]["ID"] == shieldArray[1]) newShieldArray[1] = JSON.parse(JSON.stringify(shields[i]));
                                 else if(shields[i]["ID"] == shieldArray[2]) newShieldArray[2] = JSON.parse(JSON.stringify(shields[i])); 
