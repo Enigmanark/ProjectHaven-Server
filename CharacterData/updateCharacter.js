@@ -16,6 +16,7 @@ module.exports = function(req, res, newChar, originalChar, player, id, enemyID, 
         newData["Inventory"]["Armors"] = newChar["Inventory"]["Armors"];
         newData["Inventory"]["Shields"] = newChar["Inventory"]["Shields"];
         player.characters[id] = newData;
+        player.markModified("characters");
         player.save(function(err) {
             if(err) console.log("error saving character..");
             else{
