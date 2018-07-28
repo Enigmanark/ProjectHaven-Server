@@ -9,7 +9,7 @@ module.exports = function(app) {
         blacksmith(req, res);
     });
 
-    app.post("buyitem", login, function(req, res) {
+    app.post("/buyitem", login, function(req, res) {
         buy_item(req, res);
     });
 }
