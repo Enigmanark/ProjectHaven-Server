@@ -3,6 +3,8 @@ var mongoose = require('mongoose');
 //define the schema for our user
 var weaponSchema = new mongoose.Schema({
     Name: String,
+    Level : Number,
+    Gold : Number,
     ID : Number,
     Path : String,
     Type : String,
