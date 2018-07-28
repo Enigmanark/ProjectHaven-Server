@@ -37,6 +37,7 @@ module.exports = function(req, res) {
                         Weapon.findOne({ "ID" : id }, function(err, wep) {
                             if(err) throw err;
                             else if(wep) {
+                                console.log("Sold weapon");
                                 char["Inventory"]["Weapons"][slot] = null;
                                 updateCharacter(req, res, char, player.characters[index], player, index, "Sell", wep["Gold"]);
                             }
@@ -50,6 +51,7 @@ module.exports = function(req, res) {
                         Armor.findOne({ "ID" : id }, function(err, arm) {
                             if(err) throw err;
                             else if(arm) {
+                                console.log("Sold armor");
                                 char["Inventory"]["Armors"][slot] = null;
                                 updateCharacter(req, res, char, player.characters[index], player, index, "Sell", arm["Gold"]);
                             }
@@ -63,6 +65,7 @@ module.exports = function(req, res) {
                         Shield.findOne({ "ID" : id }, function(err, shil) {
                             if(err) throw err;
                             else if(shil) {
+                                console.log("Sold shield");
                                 char["Inventory"]["Shields"][slot] = null;
                                 updateCharacter(req, res, char, player.characters[index], player, index, "Sell", shil["Gold"]);
                             }
@@ -87,6 +90,7 @@ module.exports = function(req, res) {
             var armors = inventory["Armors"];
             for(i = 0; i < armors.length; i++) {
                 if(armors[i] == id) {
+                    console.log("Found slot");
                     return i;
                 }
             }
@@ -96,6 +100,7 @@ module.exports = function(req, res) {
             var weapons = inventory["Weapons"];
             for(i = 0; i < weapons.length; i++) {
                 if(weapons[i] == id) {
+                    console.log("Found slot");
                     return i;
                 }
             }
@@ -104,7 +109,8 @@ module.exports = function(req, res) {
         else if(type == "Shield") {
             var shields = inventory["Shields"];
             for(i = 0; i < shield.length; i++) {
-                if(shield[i] == id) {
+                if(shields[i] == id) {
+                    console.log("Found slot");
                     return i;
                 }
             }
