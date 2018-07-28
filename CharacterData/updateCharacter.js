@@ -4,11 +4,25 @@ var updateEquipment = require("./GetEquipmentData");
 var train = require("../CharacterData/characterTraining");
 var recover_all = require("../CharacterData/character_recover_all");
 
-module.exports = function(req, res, newChar, originalChar, player, id, enemyID) {
+module.exports = function(req, res, newChar, originalChar, player, id, enemyID, gold=0) {
+    /*/
+        For shopping
+    /*/
+    if(enemyID == "Shop") {
+        var newData = update_base(originalChar);
+        newData["Gold"] -= gold;
+        player.characters[id] = newData;
+        player.save(function(err) {
+            if(err) console.log("error saving character..");
+            else{
+                updateEquipment(req, res, newData);
+            }
+        });
+    }
     /*/
         For training with Alyonis
     /*/
-    if(enemyID == "Training") {
+    else if(enemyID == "Training") {
         var newData = update_base(originalChar);
 
         newData = train(newData, req.body.TrainingStat);
