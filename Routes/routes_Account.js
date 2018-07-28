@@ -37,6 +37,12 @@ module.exports = function(app) {
                     }
                     else {
                         console.log("Attempting to create character");
+                        for(i = 0; i < player.characters.length; i++) {
+                            if(player.characters[i]["Name"] == req.body.Name) {
+                                console.log("Character with that name exists");
+                                res.send("603");
+                            }
+                        }
                         var charData = characterJSON;
                         charData["Name"] = req.body.Name;
                         charData["Inventory"] = beginnerInventory();
