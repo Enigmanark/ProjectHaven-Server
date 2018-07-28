@@ -86,6 +86,7 @@ module.exports = function(req, res) {
     });
 
     function find_slot(inventory, type, id) {
+        console.log("Looking for ID " + id);
         if(type == "Armor") {
             var armors = inventory["Armors"];
             for(i = 0; i < armors.length; i++) {
