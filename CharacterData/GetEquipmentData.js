@@ -15,7 +15,7 @@ module.exports = async function(req, res, character) {
 		if(weapons.length > 0) {
             var newWepArray = [];
 			for(i = 0; i < 10; i++) {
-                if(weapons[i] == null) {
+                if(weaponArray[i] == null) {
                     newWepArray[i] = null;
                 }
                 else if(weapons[i]["ID"] == wepArray[0]) newWepArray[0] = JSON.parse(JSON.stringify(weapons[i]));
@@ -44,7 +44,7 @@ module.exports = async function(req, res, character) {
                 if(armors.length > 0) {
                     var newArmorArray = [];
                     for(i = 0; i < 10; i++) {
-                        if(armors[i] == null) {
+                        if(armorArray[i] == null) {
                             newArmorArray[i] = null;
                         }
                         else if(armors[i]["ID"] == armorArray[0]) newArmorArray[0] = JSON.parse(JSON.stringify(armors[i]));
@@ -73,7 +73,7 @@ module.exports = async function(req, res, character) {
                         if(shields.length > 0) {
                             var newShieldArray = [];
                             for(i = 0; i < 10; i++) {
-                                if(shields[i] == null) {
+                                if(shieldArray[i] == null) {
                                     newShieldArray[i] = null;
                                 }
                                 else if(shields[i]["ID"] == shieldArray[0]) newShieldArray[0] = JSON.parse(JSON.stringify(shields[i]));
