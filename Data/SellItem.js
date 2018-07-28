@@ -110,7 +110,7 @@ module.exports = function(req, res) {
 
         else if(type == "Shield") {
             var shields = inventory["Shields"];
-            for(i = 0; i < shield.length; i++) {
+            for(i = 0; i < shields.length; i++) {
                 console.log(shields[i]);
                 if(shields[i] == id) {
                     console.log("Found slot");
