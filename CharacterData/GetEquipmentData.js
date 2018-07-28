@@ -14,22 +14,19 @@ module.exports = async function(req, res, character) {
         console.log("No database error, continuing");
 		if(weapons.length > 0) {
             var newWepArray = [];
-			for(i = 0; i < 10; i++) {
-                if(wepArray[i] == null) {
-                    newWepArray[i] = null;
+            for(k = 0; k < 10; k++) {
+                newWepArray[k] = null;
+            }
+            for(i = 0; i < 10; i++) {
+                var wep = weapons[i];
+                if(wep != null) {
+                    for(j = 0; j < wepArray.length; j++) {
+                        if(wep["ID"] == wepArray[j]) {
+                            newWepArray[j] = JSON.parse(JSON.stringify(shil));
+                        }
+                    }
                 }
-                else if(weapons[i] == null) {}
-                else if(weapons[i]["ID"] == wepArray[0]) newWepArray[0] = JSON.parse(JSON.stringify(weapons[i]));
-                else if(weapons[i]["ID"] == wepArray[1]) newWepArray[1] = JSON.parse(JSON.stringify(weapons[i]));
-                else if(weapons[i]["ID"] == wepArray[2]) newWepArray[2] = JSON.parse(JSON.stringify(weapons[i])); 
-                else if(weapons[i]["ID"] == wepArray[3]) newWepArray[3] = JSON.parse(JSON.stringify(weapons[i])); 
-                else if(weapons[i]["ID"] == wepArray[4]) newWepArray[4] = JSON.parse(JSON.stringify(weapons[i])); 
-                else if(weapons[i]["ID"] == wepArray[5]) newWepArray[5] = JSON.parse(JSON.stringify(weapons[i])); 
-                else if(weapons[i]["ID"] == wepArray[6]) newWepArray[6] = JSON.parse(JSON.stringify(weapons[i])); 
-                else if(weapons[i]["ID"] == wepArray[7]) newWepArray[7] = JSON.parse(JSON.stringify(weapons[i])); 
-                else if(weapons[i]["ID"] == wepArray[8]) newWepArray[8] = JSON.parse(JSON.stringify(weapons[i])); 
-                else if(weapons[i]["ID"] == wepArray[9]) newWepArray[9] = JSON.parse(JSON.stringify(weapons[i]));
-			}
+            }
             character["Inventory"]["Weapons"] = newWepArray;
             console.log("Got weapon data");
             console.log("About to check the armor database");
@@ -44,21 +41,18 @@ module.exports = async function(req, res, character) {
                 console.log("No database error, continuing");
                 if(armors.length > 0) {
                     var newArmorArray = [];
+                    for(k = 0; k < 10; k++) {
+                        newArmorArray[k] = null;
+                    }
                     for(i = 0; i < 10; i++) {
-                        if(armorArray[i] == null) {
-                            newArmorArray[i] = null;
+                        var armor = armorss[i];
+                        if(armor != null) {
+                            for(j = 0; j < armorArray.length; j++) {
+                                if(armor["ID"] == armorArray[j]) {
+                                    newArmorArray[j] = JSON.parse(JSON.stringify(shil));
+                                }
+                            }
                         }
-                        else if(armors[i] == null) { }
-                        else if(armors[i]["ID"] == armorArray[0]) newArmorArray[0] = JSON.parse(JSON.stringify(armors[i]));
-                        else if(armors[i]["ID"] == armorArray[1]) newArmorArray[1] = JSON.parse(JSON.stringify(armors[i]));
-                        else if(armors[i]["ID"] == armorArray[2]) newArmorArray[2] = JSON.parse(JSON.stringify(armors[i])); 
-                        else if(armors[i]["ID"] == armorArray[3]) newArmorArray[3] = JSON.parse(JSON.stringify(armors[i])); 
-                        else if(armors[i]["ID"] == armorArray[4]) newArmorArray[4] = JSON.parse(JSON.stringify(armors[i])); 
-                        else if(armors[i]["ID"] == armorArray[5]) newArmorArray[5] = JSON.parse(JSON.stringify(armors[i])); 
-                        else if(armors[i]["ID"] == armorArray[6]) newArmorArray[6] = JSON.parse(JSON.stringify(armors[i])); 
-                        else if(armors[i]["ID"] == armorArray[7]) newArmorArray[7] = JSON.parse(JSON.stringify(armors[i])); 
-                        else if(armors[i]["ID"] == armorArray[8]) newArmorArray[8] = JSON.parse(JSON.stringify(armors[i])); 
-                        else if(armors[i]["ID"] == armorArray[9]) newArmorArray[9] = JSON.parse(JSON.stringify(armors[i]));
                     }
                     character["Inventory"]["Armors"] = newArmorArray;
                     console.log("Got armor data");
