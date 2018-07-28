@@ -11,7 +11,7 @@ module.exports = function(req, res, newChar, originalChar, player, id, enemyID, 
     if(enemyID == "Shop") {
         console.log("Now running update from shop");
         var newData = update_base(originalChar);
-        newData["Gold"] -= gold;
+        newData["Gold"] = newData["Gold"] - gold;
         newData["Inventory"]["Weapons"] = newChar["Inventory"]["Weapons"];
         newData["Inventory"]["Armors"] = newChar["Inventory"]["Armors"];
         newData["Inventory"]["Shields"] = newChar["Inventory"]["Shields"];
