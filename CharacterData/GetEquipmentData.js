@@ -22,7 +22,7 @@ module.exports = async function(req, res, character) {
                 if(wep != null) {
                     for(j = 0; j < wepArray.length; j++) {
                         if(wep["ID"] == wepArray[j]) {
-                            newWepArray[j] = JSON.parse(JSON.stringify(shil));
+                            newWepArray[j] = JSON.parse(JSON.stringify(wep));
                         }
                     }
                 }
@@ -49,7 +49,7 @@ module.exports = async function(req, res, character) {
                         if(armor != null) {
                             for(j = 0; j < armorArray.length; j++) {
                                 if(armor["ID"] == armorArray[j]) {
-                                    newArmorArray[j] = JSON.parse(JSON.stringify(shil));
+                                    newArmorArray[j] = JSON.parse(JSON.stringify(armor));
                                 }
                             }
                         }
