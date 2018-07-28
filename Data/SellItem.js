@@ -32,7 +32,7 @@ module.exports = function(req, res) {
                     var char = req.body.Character;
                     var id = req.body.ID;
                     var type = req.body.Type;
-                    var slot = find_slot(char["Inventory"], type, id);
+                    var slot = find_slot(player.characters[index]["Inventory"], type, id);
                     if(type == "Weapon") {
                         Weapon.findOne({ "ID" : id }, function(err, wep) {
                             if(err) throw err;
