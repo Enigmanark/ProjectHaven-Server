@@ -41,6 +41,7 @@ module.exports = function(req, res) {
                             if(err) throw err;
                             else if(wep) {
                                 if(has_enough_gold(char, wep)) {
+                                    console.log("Bought weapon");
                                     char["Inventory"]["Weapons"][slot] = wep["ID"];
                                     updateCharacter(req, res, char, player.characters[i], player, i, "Shop", wep["Gold"]);
                                 }
@@ -57,6 +58,7 @@ module.exports = function(req, res) {
                             if(err) throw err;
                             else if(arm) {
                                 if(has_enough_gold(char, arm)) {
+                                    console.log("Bought armor");
                                     char["Inventory"]["Armors"][slot] = arm["ID"];
                                     updateCharacter(req, res, char, player.characters[i], player, i, "Shop", arm["Gold"]);
                                 }
@@ -73,6 +75,7 @@ module.exports = function(req, res) {
                             if(err) throw err;
                             else if(shil) {
                                 if(has_enough_gold(char, shil)) {
+                                    console.log("Bought shield");
                                     char["Inventory"]["Shields"][slot] = shil["ID"];
                                     updateCharacter(req, res, char, player.characters[i], player, i, "Shop", shil["Gold"]);  
                                 }

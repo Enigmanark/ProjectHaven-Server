@@ -9,6 +9,7 @@ module.exports = function(req, res, newChar, originalChar, player, id, enemyID, 
         For shopping
     /*/
     if(enemyID == "Shop") {
+        console.log("Now running update from shop");
         var newData = update_base(originalChar);
         newData["Gold"] -= gold;
         player.characters[id] = newData;
