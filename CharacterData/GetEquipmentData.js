@@ -74,21 +74,18 @@ module.exports = async function(req, res, character) {
                         console.log("No database error, continuing");
                         if(shields.length > 0) {
                             var newShieldArray = [];
+                            for(k = 0; k < 10; k++) {
+                                newShieldArray[k] = null;
+                            }
                             for(i = 0; i < 10; i++) {
-                                if(shieldArray[i] == null) {
-                                    newShieldArray[i] = null;
+                                var shil = shields[i];
+                                if(shil != null) {
+                                    for(j = 0; j < shieldArray.length; j++) {
+                                        if(shil["ID"] == shieldArray[j]) {
+                                            newShieldArray[j] = JSON.parse(JSON.stringify(shil));
+                                        }
+                                    }
                                 }
-                                else if(shields[i] == null) { }
-                                else if(shields[i]["ID"] == shieldArray[0]) newShieldArray[0] = JSON.parse(JSON.stringify(shields[i]));
-                                else if(shields[i]["ID"] == shieldArray[1]) newShieldArray[1] = JSON.parse(JSON.stringify(shields[i]));
-                                else if(shields[i]["ID"] == shieldArray[2]) newShieldArray[2] = JSON.parse(JSON.stringify(shields[i])); 
-                                else if(shields[i]["ID"] == shieldArray[3]) newShieldArray[3] = JSON.parse(JSON.stringify(shields[i])); 
-                                else if(shields[i]["ID"] == shieldArray[4]) newShieldArray[4] = JSON.parse(JSON.stringify(shields[i])); 
-                                else if(shields[i]["ID"] == shieldArray[5]) newShieldArray[5] = JSON.parse(JSON.stringify(shields[i])); 
-                                else if(shields[i]["ID"] == shieldArray[6]) newShieldArray[6] = JSON.parse(JSON.stringify(shields[i])); 
-                                else if(shields[i]["ID"] == shieldArray[7]) newShieldArray[7] = JSON.parse(JSON.stringify(shields[i])); 
-                                else if(shields[i]["ID"] == shieldArray[8]) newShieldArray[8] = JSON.parse(JSON.stringify(shields[i])); 
-                                else if(shields[i]["ID"] == shieldArray[9]) newShieldArray[9] = JSON.parse(JSON.stringify(shields[i]));
                             }
                             character["Inventory"]["Shields"] = newShieldArray;
                             character = JSON.stringify(character);
