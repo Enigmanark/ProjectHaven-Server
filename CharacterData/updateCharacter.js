@@ -24,6 +24,24 @@ module.exports = function(req, res, newChar, originalChar, player, id, enemyID, 
             }
         });
     }
+
+    else if(enemyID == "Sell") {
+        console.log("Now running update from sell");
+        var newData = update_base(originalChar);
+        newData["Gold"] = newData["Gold"] + gold;
+        newData["Inventory"]["Weapons"] = newChar["Inventory"]["Weapons"];
+        newData["Inventory"]["Armors"] = newChar["Inventory"]["Armors"];
+        newData["Inventory"]["Shields"] = newChar["Inventory"]["Shields"];
+        player.characters[id] = newData;
+        player.markModified("characters");
+        player.save(function(err) {
+            if(err) console.log("error saving character..");
+            else{
+                updateEquipment(req, res, newData);
+            }
+        });
+    }
+
     /*/
         For training with Alyonis
     /*/
