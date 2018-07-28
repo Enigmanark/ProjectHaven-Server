@@ -32,14 +32,14 @@ module.exports = function(req, res) {
                     var char = req.body.Character;
                     var id = req.body.ID;
                     var type = req.body.Type;
-                    var slot = find_slot(player.characters[index]["Inventory"], type, id);
+                    var slot = find_slot(chosenCharacter["Inventory"], type, id);
                     if(type == "Weapon") {
                         Weapon.findOne({ "ID" : id }, function(err, wep) {
                             if(err) throw err;
                             else if(wep) {
                                 console.log("Sold weapon");
-                                char["Inventory"]["Weapons"][slot] = null;
-                                updateCharacter(req, res, char, player.characters[index], player, index, "Sell", wep["Gold"]);
+                                chosenCharacter["Inventory"]["Weapons"][slot] = null;
+                                updateCharacter(req, res, char, chosenCharacter, player, index, "Sell", wep["Gold"]);
                             }
                             else {
                                 res.send("401")
@@ -52,8 +52,8 @@ module.exports = function(req, res) {
                             if(err) throw err;
                             else if(arm) {
                                 console.log("Sold armor");
-                                char["Inventory"]["Armors"][slot] = null;
-                                updateCharacter(req, res, char, player.characters[index], player, index, "Sell", arm["Gold"]);
+                                chosenCharacter["Inventory"]["Armors"][slot] = null;
+                                updateCharacter(req, res, char, chosenCharacter, player, index, "Sell", arm["Gold"]);
                             }
                             else {
                                 res.send("401")
@@ -66,8 +66,8 @@ module.exports = function(req, res) {
                             if(err) throw err;
                             else if(shil) {
                                 console.log("Sold shield");
-                                char["Inventory"]["Shields"][slot] = null;
-                                updateCharacter(req, res, char, player.characters[index], player, index, "Sell", shil["Gold"]);
+                                chosenCharacter["Inventory"]["Shields"][slot] = null;
+                                updateCharacter(req, res, char, chosenCharacter, player, index, "Sell", shil["Gold"]);
                             }
                             else {
                                 res.send("401")
