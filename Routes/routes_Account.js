@@ -36,24 +36,29 @@ module.exports = function(app) {
                         res.send("600");
                     }
                     else {
+                        var can = true;
                         console.log("Attempting to create character");
                         for(i = 0; i < player.characters.length; i++) {
                             if(player.characters[i]["Name"] == req.body.Name) {
                                 console.log("Character with that name exists");
                                 res.send("603");
+                                can = false;
+                                break;
                             }
                         }
-                        var charData = characterJSON;
-                        charData["Name"] = req.body.Name;
-                        charData["Inventory"] = beginnerInventory();
-                        player.characters.push(charData);
-                        player.markModified("characters");
-                        player.save(function(err) {
-                            if(err) throw err;
-                            else {
-                                res.send("500");
-                            }
-                        });
+                        if(can) {
+                            var charData = characterJSON;
+                            charData["Name"] = req.body.Name;
+                            charData["Inventory"] = beginnerInventory();
+                            player.characters.push(charData);
+                            player.markModified("characters");
+                            player.save(function(err) {
+                                if(err) throw err;
+                                else {
+                                    res.send("500");
+                                }
+                            });
+                        }
                     }
                 }
                 else {
