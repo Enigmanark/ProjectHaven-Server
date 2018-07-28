@@ -44,7 +44,7 @@ module.exports = function(req, res) {
                                 if(has_enough_gold(char, wep)) {
                                     console.log("Bought weapon");
                                     char["Inventory"]["Weapons"][slot] = wep["ID"];
-                                    updateCharacter(req, res, char, player.characters[i], player, index, "Shop", wep["Gold"]);
+                                    updateCharacter(req, res, char, player.characters[index], player, index, "Shop", wep["Gold"]);
                                 }
                                 else res.send("606");
                             }
