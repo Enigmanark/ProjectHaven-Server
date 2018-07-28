@@ -4,7 +4,7 @@ var updateEquipment = require("./GetEquipmentData");
 var train = require("../CharacterData/characterTraining");
 var recover_all = require("../CharacterData/character_recover_all");
 
-module.exports = function(req, res, newChar, originalChar, player, id, enemyID, gold=0) {
+module.exports = function(req, res, newChar, originalChar, player, id, enemyID, gold=0, ) {
     /*/
         For shopping
     /*/
@@ -12,6 +12,9 @@ module.exports = function(req, res, newChar, originalChar, player, id, enemyID, 
         console.log("Now running update from shop");
         var newData = update_base(originalChar);
         newData["Gold"] -= gold;
+        newData["Inventory"]["Weapons"] = newChar["Inventory"]["Weapons"];
+        newData["Inventory"]["Armors"] = newChar["Inventory"]["Armors"];
+        newData["Inventory"]["Shields"] = newChar["Inventory"]["Shields"];
         player.characters[id] = newData;
         player.save(function(err) {
             if(err) console.log("error saving character..");
