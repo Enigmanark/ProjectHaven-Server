@@ -2,6 +2,7 @@ var Weapon = require("../Models/weapon");
 var Armor = require("../Models/armor");
 var Shield = require("../Models/shield");
 var Player = require("../Models/player");
+var updateCharacter = require("../CharacterData/updateCharacter");
 
 module.exports = function(req, res) {
     Player.findOne( { "email" : req.body.Email }, function(err, player) {
