@@ -89,6 +89,7 @@ module.exports = function(req, res) {
         if(type == "Armor") {
             var armors = inventory["Armors"];
             for(i = 0; i < armors.length; i++) {
+                console.log(armors[i]);
                 if(armors[i] == id) {
                     console.log("Found slot");
                     return i;
@@ -99,6 +100,7 @@ module.exports = function(req, res) {
         else if(type == "Weapon") {
             var weapons = inventory["Weapons"];
             for(i = 0; i < weapons.length; i++) {
+                console.log(weapons[i]);
                 if(weapons[i] == id) {
                     console.log("Found slot");
                     return i;
@@ -109,6 +111,7 @@ module.exports = function(req, res) {
         else if(type == "Shield") {
             var shields = inventory["Shields"];
             for(i = 0; i < shield.length; i++) {
+                console.log(shields[i]);
                 if(shields[i] == id) {
                     console.log("Found slot");
                     return i;
