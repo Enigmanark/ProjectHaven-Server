@@ -15,7 +15,7 @@ module.exports = async function(req, res, character) {
 		if(weapons.length > 0) {
             var newWepArray = [];
 			for(i = 0; i < 10; i++) {
-                if(weaponArray[i] == null) {
+                if(wepArray[i] == null) {
                     newWepArray[i] = null;
                 }
                 else if(weapons[i]["ID"] == wepArray[0]) newWepArray[0] = JSON.parse(JSON.stringify(weapons[i]));
